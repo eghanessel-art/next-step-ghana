@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Next Step Ghana</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b6e4f">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Next Step">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{--bg:#f2f6f4;--card:#fff;--ink:#12241b;--mute:#566a5f;--line:#d5e0da;--accent:#0b6e4f;--onacc:#fff;--soft:#e3f2eb;--warn:#97590a;--bad:#b3261e;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1612;--card:#16211b;--ink:#e9f0eb;--mute:#9fb2a7;--line:#2a3b32;--accent:#43c493;--onacc:#06251a;--soft:#1d3329;--warn:#f0b34a;--bad:#ff8a80;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1612;--card:#16211b;--ink:#e9f0eb;--mute:#9fb2a7;--line:#2a3b32;--accent:#43c493;--onacc:#06251a;--soft:#1d3329;--warn:#f0b34a;--bad:#ff8a80;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 "Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif}
+.flag{height:6px;background:linear-gradient(90deg,#ce1126 0 33.3%,#fcd116 33.3% 66.6%,#006b3f 66.6%)}
+header{padding:14px 18px 6px;max-width:640px;margin:0 auto}
+header b{font:800 1.35rem "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.01em}
+main{max-width:640px;margin:0 auto;padding:6px 16px 120px}
+h1{font:800 clamp(1.6rem,6.5vw,2.1rem)/1.15 "Bricolage Grotesque",system-ui,sans-serif;margin:10px 0 6px;letter-spacing:-.02em}
+h2{font:600 1.15rem/1.25 "Bricolage Grotesque",system-ui,sans-serif;margin:18px 0 10px}
+p{margin:0 0 10px}.mute{color:var(--mute)}.small{font-size:.9rem}
+button,select,input{font:inherit;color:var(--ink)}
+button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px}
+.prog{display:flex;gap:6px;margin:8px 0 14px}.prog i{flex:1;height:6px;border-radius:3px;background:var(--line)}.prog i.on{background:var(--accent)}
+.fld{margin-bottom:14px}.fld label{display:block;font-weight:600;margin-bottom:6px}
+select,input[type=text]{width:100%;min-height:50px;padding:10px 12px;background:var(--bg);border:1.5px solid var(--line);border-radius:12px}
+.two{display:grid;grid-template-columns:1fr 120px;gap:8px;margin-bottom:10px}
+.btn{display:block;width:100%;min-height:52px;padding:12px;border:0;border-radius:14px;background:var(--accent);color:var(--onacc);font-weight:600;font-size:1.05rem;cursor:pointer;text-align:center;text-decoration:none}
+.btn.o{background:none;border:1.5px solid var(--accent);color:var(--accent)}
+.btns{display:grid;grid-template-columns:1fr 2fr;gap:10px;margin-top:6px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{min-height:68px;padding:10px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);text-align:left;font-weight:600;cursor:pointer}
+.opt[aria-pressed="true"]{border-color:var(--accent);background:var(--soft)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;margin:0 -16px;padding-left:16px;padding-right:16px}
+.chip{flex:none;min-height:40px;padding:6px 14px;border:1.5px solid var(--line);border-radius:99px;background:var(--card);cursor:pointer;font-weight:600}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--onacc)}
+.scale{height:12px;border-radius:6px;background:linear-gradient(90deg,#1f9d6b,#fcd116 55%,#ce1126);position:relative;margin:14px 4px 6px}
+.scale i{position:absolute;top:-6px;width:8px;height:24px;border-radius:4px;background:var(--ink);border:2px solid var(--card);transform:translateX(-50%)}
+.row{display:flex;justify-content:space-between}
+.big{font:800 3.2rem/1 "Bricolage Grotesque",system-ui,sans-serif}
+.tag{display:inline-block;font-size:.85rem;font-weight:600;padding:2px 10px;border-radius:99px;background:var(--soft);color:var(--accent)}
+.tag.w{background:none;border:1px solid var(--warn);color:var(--warn)}
+.warn{color:var(--warn);font-weight:600}.err{color:var(--bad);font-weight:600}
+.u h3{margin:0 0 2px;font:600 1.1rem/1.25 "Bricolage Grotesque",system-ui,sans-serif}
+.u .m{color:var(--mute);font-size:.92rem;margin-bottom:6px}
+.u a{display:inline-block;margin-top:8px;font-weight:600;color:var(--accent)}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));z-index:5}
+nav button{flex:1;min-height:56px;background:none;border:0;border-radius:12px;color:var(--mute);font-weight:600;font-size:.85rem;cursor:pointer}
+nav button span{display:block;font-size:1.35rem;line-height:1.2}
+nav button[aria-current="page"]{color:var(--accent);background:var(--soft)}
+ol{padding-left:20px;margin:0 0 10px}
+</style>
+</head>
+<body>
+<div class="flag"></div>
+<header><b>Next Step Ghana</b></header>
+<main id="app"></main>
+<nav>
+<button data-t="u" onclick="go('u')"><span>🎓</span>Universities</button>
+<button data-t="s" onclick="go('s')"><span>💰</span>Scholarships</button>
+<button data-t="m" onclick="go('m')"><span>📲</span>Share and install</button>
+</nav>
+<script>
+var $=function(s){return document.querySelector(s)};
+var G=['A1','B2','B3','C4','C5','C6','D7','E8','F9'];
+var AREAS=[['any','Not sure yet','🤔'],['sci','Science, engineering, computing','🔬'],['health','Health and medicine','🩺'],['biz','Business and economics','📊'],['arts','Arts, law, social sciences','⚖️'],['edu','Education and teaching','🍎'],['agri','Agriculture and natural resources','🌱']];
+var U=[
+{n:'KNUST',c:'Kumasi',k:'Engineering, sciences, architecture, pharmacy and health, business',a:['sci','health','biz','agri','arts'],hd:1,s:'knust.edu.gh'},
+{n:'University of Ghana (Legon)',c:'Accra',k:'Wide range: humanities, law, social sciences, business, health, sciences',a:['arts','biz','health','sci','agri'],hd:1,s:'ug.edu.gh'},
+{n:'University of Cape Coast',c:'Cape Coast',k:'Education, sciences, arts, business, health-related programmes',a:['edu','sci','arts','biz','health'],hd:1,s:'ucc.edu.gh'},
+{n:'University of Education, Winneba',c:'Winneba',k:'Teacher education, languages, sciences and arts',a:['edu','arts','sci'],s:'uew.edu.gh'},
+{n:'University for Development Studies',c:'Tamale, Wa, Navrongo',k:'Agriculture, health, development studies, education',a:['agri','health','edu','arts','sci'],s:'uds.edu.gh'},
+{n:'University of Mines and Technology',c:'Tarkwa',k:'Mining, geological, petroleum and engineering programmes',a:['sci'],s:'umat.edu.gh'},
+{n:'University of Health and Allied Sciences',c:'Ho',k:'Nursing, medicine, pharmacy, laboratory science and other health programmes',a:['health'],s:'uhas.edu.gh'},
+{n:'University of Energy and Natural Resources',c:'Sunyani',k:'Energy, environment, natural resources and applied science',a:['sci','agri'],s:'uenr.edu.gh'},
+{n:'UPSA',c:'Accra',k:'Accounting, marketing, banking, public administration and law',a:['biz','arts'],s:'upsa.edu.gh'},
+{n:'GIMPA',c:'Accra',k:'Management, public administration, law and technology',a:['biz','arts','sci'],s:'gimpa.edu.gh'},
+{n:'Ashesi University (private)',c:'Berekuso',k:'Computer science, engineering, business; liberal arts approach, with fees',a:['sci','biz'],s:'ashesi.edu.gh'},
+{n:'CKT-UTAS',c:'Navrongo and Wa',k:'Applied sciences, agriculture, technology and education',a:['agri','sci','edu'],s:'cktutas.edu.gh'},
+{n:'AAMUSTED',c:'Kumasi and Asante Mampong',k:'Technical and vocational teacher education, applied sciences',a:['edu','sci','biz'],s:'aamusted.edu.gh'},
+{n:'Technical universities',c:'Accra, Kumasi, Takoradi, Cape Coast, Ho and others',k:'Practical, job-focused BTech and HND programmes in engineering, business and applied science',a:['sci','biz','agri'],tech:1}
+];
+var ADV={sci:'Most science and engineering programmes ask for elective Mathematics, Physics and/or Chemistry.',health:'Most health programmes ask for elective Biology and Chemistry, plus Physics or Mathematics.',biz:'Business programmes often accept Economics, Accounting, Business Management, Mathematics or Geography.',arts:'Arts and law programmes often accept Literature, History, Government, Economics or languages.',edu:'Education requirements depend on the subjects you want to teach.',agri:'Agriculture programmes often ask for Chemistry, Biology, Agricultural Science, Physics or Mathematics.'};
+var S=[
+{n:'Chevening',w:'UK',l:['Master’s'],d:'UK government scholarship for a one-year master’s. Usually needs at least two years of work experience and leadership potential.',u:'https://www.chevening.org'},
+{n:'Commonwealth Master’s Scholarships',w:'UK',l:['Master’s'],d:'For students from lower and middle income Commonwealth countries, including Ghana. Usually covers fees, travel and living costs.',u:'https://cscuk.fcdo.gov.uk'},
+{n:'Gates Cambridge',w:'UK',l:['Master’s','PhD'],d:'Full-cost scholarships to the University of Cambridge for outstanding applicants from outside the UK.',u:'https://www.gatescambridge.org'},
+{n:'DAAD scholarships',w:'Germany',l:['Master’s','PhD'],d:'German funding for graduate study and research, with several programmes. Some need work experience, so check each one.',u:'https://www.daad.de/en'},
+{n:'Erasmus Mundus Joint Master’s',w:'Europe',l:['Master’s'],d:'Study in two or more European countries. Many programmes offer scholarships that cover most costs.',u:'https://erasmus-plus.ec.europa.eu'},
+{n:'Fulbright Foreign Student Program',w:'USA',l:['Master’s','PhD'],d:'US government programme for graduate study. You apply through your country’s Fulbright commission or US embassy.',u:'https://foreign.fulbrightonline.org'},
+{n:'Chinese Government Scholarship (CSC)',w:'Asia',l:['Master’s','PhD'],d:'Funded study at Chinese universities, with different programme types and application routes.',u:'https://www.campuschina.org'},
+{n:'Türkiye Burslari',w:'Asia',l:['Master’s','PhD'],d:'Turkish government scholarship that usually covers tuition, housing and a monthly allowance.',u:'https://turkiyeburslari.gov.tr'},
+{n:'Korean Government Scholarship (GKS)',w:'Asia',l:['Master’s','PhD'],d:'Korean government funding for graduate study, including a language-training year.',u:'https://www.studyinkorea.go.kr'},
+{n:'Mastercard Foundation Scholars Program',w:'Africa',l:['Master’s'],d:'Supports talented young Africans who need financial help, through partner universities. Check which partner schools are open to you.',u:'https://mastercardfdn.org/all/scholars'}
+];
+var EL={
+'General Science':['Biology','Chemistry','Physics','Elective Mathematics (E-Maths)','Geography','Agricultural Science','ICT / Computer Science'],
+'General Arts':['Economics','Geography','Government','History','Christian Religious Studies','Islamic Religious Studies','Literature in English','French','Ghanaian Language','Music','Elective Mathematics (E-Maths)'],
+'Business':['Accounting','Business Management','Costing','Economics','Elective Mathematics (E-Maths)','ICT / Computer Science'],
+'Home Economics':['Management in Living','Food and Nutrition','Clothing and Textiles','Biology','Chemistry'],
+'Visual Arts':['General Knowledge in Art','Graphic Design','Picture Making','Sculpture','Textiles','Ceramics','Basketry','Leatherwork','Jewellery','Elective Mathematics (E-Maths)'],
+'Agriculture':['General Agriculture','Animal Husbandry','Crop Husbandry and Horticulture','Agricultural Economics','Chemistry','Physics','Biology'],
+'Technical / Applied Technology':['Technical Drawing / Design and Communication Technology','Building Construction','Woodwork','Metalwork','Electrical Engineering','Electronics','Automobile Engineering','Applied Electricity'],
+'Languages':['Ghanaian Language','French','Arabic','Spanish','Literature in English'],
+'Performing Arts':['Music','Dance','Drama / Theatre Arts','Literature in English','History'],
+'STEM Specialised Pathways':['Engineering','Biomedical Science','Manufacturing','Robotics','Information Technology','Computer Science','Aviation and Aerospace']
+};
+function subSel(k,L){var all=[];Object.keys(EL).forEach(function(g){EL[g].forEach(function(x){if(all.indexOf(x)<0&&L.indexOf(x)<0)all.push(x)})});var c=st.sub[k]||'';function o(x){return '<option'+(c===x?' selected':'')+'>'+x+'</option>'}return '<select id="s_'+k+'" onchange="st.sub.'+k+'=this.value" aria-label="Elective subject"><option value="">Subject</option>'+L.map(o).join('')+'<optgroup label="Other subjects">'+all.map(o).join('')+'</optgroup></select>'}
+var AB={Ma:['Elective Mathematics (E-Maths)'],Ph:['Physics'],Ch:['Chemistry'],Bi:['Biology'],Ag:['General Agriculture','Agricultural Science'],AH:['Animal Husbandry'],CH:['Crop Husbandry and Horticulture'],Ec:['Economics'],Ge:['Geography'],Go:['Government'],Hi:['History'],Ac:['Accounting'],BM:['Business Management'],Co:['Costing'],IT:['ICT / Computer Science','Computer Science','Information Technology'],TD:['Technical Drawing / Design and Communication Technology'],BC:['Building Construction'],WW:['Woodwork'],MW:['Metalwork'],AE:['Applied Electricity'],El:['Electronics'],AM:['Automobile Engineering'],EE:['Electrical Engineering'],GK:['General Knowledge in Art'],GD:['Graphic Design'],PM:['Picture Making'],Sc:['Sculpture'],Tx:['Textiles'],Ce:['Ceramics'],Le:['Leatherwork'],Je:['Jewellery'],Fr:['French'],Li:['Literature in English'],GL:['Ghanaian Language'],RS:['Christian Religious Studies','Islamic Religious Studies'],Ml:['Management in Living'],FN:['Food and Nutrition'],CT:['Clothing and Textiles'],En:['Engineering']};
+var GR={Sci:'General Science',Art:'General Arts',Bus:'Business',HE:'Home Economics',VA:'Visual Arts',Tech:'Technical / Applied Technology'};
+var E1='Ph,Ma,Ch',EM=E1+'|Ph,Ma,MW/AM/AE/TD/BC/WW/IT/En@B3',EC=E1+'|Ph,Ma,AE/EE/IT/En@B3',H1='Bi,Ch,Ph/Ma',AG='Ch,Ph/Ma,Bi/Ag/AH/CH',AN='3*G:VA/G:HE/G:Tech/G:Sci/G:Art/G:Bus',SS='Also needs a credit in Social Studies.';
+var K=[
+['BSc. Agriculture','agri',20,AG],['BSc. Agricultural Biotechnology','agri',17,AG],
+['BSc. Agribusiness Management','agri',15,'Ch,Ph/Ma,Bi/Ag|3*Ec/Ac/BM/Co/Ma@B3|Ec,Ge,Ma@B3|Ch,Ph/Ma,Bi/Ag/CH'],
+['BSc. Landscape Design and Management','agri',17,'3*Ch/Ph/Ma/CH/Bi/Ag|3*Ma/Ge/Ec/TD/GK|3*GK/GD/Ch/PM/Sc'],
+['BSc. Natural Resources Management','agri',18,'Ch,Ph/Ma,Bi/Ag'],['BSc. Forest Resources Technology','agri',24,'Ch,Ph/Ma,Bi/Ag'],['BSc. Aquaculture and Water Resources Management','agri',20,'Ch,Ph/Ma,Bi/Ag'],
+['BSc. Packaging Technology','sci',15,'3*G:Sci/G:Art/G:VA/G:Tech/G:HE'],
+['BSc. Architecture','sci',7,'Ma,2*TD/WW/MW/BC/Ch/Ph/Bi/GK/GD/PM/Ec/Ge'],
+['BSc. Construction Technology and Management','sci',9,'Ma,2*TD/WW/BC/MW/Ch/Ph/Ec/Ge'],
+['BSc. Quantity Surveying and Construction Economics','sci',9,'Ma,2*Ch/Ph/Ec/Ge/TD/BC/WW/MW'],
+['BSc. Development Planning','arts',9,'3*Ge/Ec/Go/Hi/Ma/GK/BM/Ac/Co'],
+['BSc. Human Settlement Planning','arts',10,'Ge,Ec/BM/Go/Ma/Ac/Co/GD,Ec/BM/Go/Ma/Ac/Co/GD/TD/PM/Sc/Ph/Hi/BC/WW/MW/GK'],
+['BSc. Land Economy','biz',8,'Ec,Ge,Ac/BM/Go/Co/Fr/Li/Hi/BC/TD/Ma|Ec,2*Ma/Ge/Ac/BM/Co/Go/Fr/BC/TD/GK'],
+['BSc. Real Estate','biz',9,'Ec,Ge,Ac/BM/Go/Co/Fr/Li/Hi/BC/TD/Ma|Ec,2*Ma/Ge/Ac/BM/Co/Go/Fr/BC/TD/GK'],
+['BFA. Fine Art and Curatorial Practice','arts',16,'GK,2*G:VA|GK,2*G:HE|GK,2*G:Tech|GK,2*G:Sci|GK,2*G:Art|GK,2*G:Bus'],
+['BA. Communication Design','arts',11,'3*GD/GK/IT/PM/Sc/Tx/Ce/Je','Needs Graphic Design, General Knowledge in Art and ICT; confirm the exact combination with KNUST.'],
+['BA. Integrated Rural Art and Industry','arts',15,'3*G:VA/G:HE/G:Sci/G:Art/G:Bus'],
+['BA. Publishing Studies','arts',12,'GK,PM/GD,Tx/Sc/Le|3*G:Art|3*G:Bus|GK,Ml,FN/CT|Bi,Ch,Ma/Ph'],
+['BSc. Metal Product Design Technology','arts',16,'3*G:VA/G:HE/G:Tech/G:Sci'],['BSc. Textile Design and Technology','arts',13,AN],['BSc. Fashion Design','arts',11,AN],
+['BFA. Ceramics','arts',24,'3*G:VA/G:HE/G:Art'],['BSc. Ceramics Technology','sci',23,'Ce,GK,Ch/Ma/Ph|3*Ma/Ch/Ph/Bi|3*TD/BC/AE/AM/El/Ph'],
+['B.Ed. Junior High School Education','edu',15,'3*G:Sci/Ag/IT|3*G:VA|3*G:Art'],['B.Ed. Chemistry','edu',20,'Ch,Ma,Ph/Bi/IT'],['B.Ed. Biology','edu',18,'Bi,Ch,IT/Ph/Ma'],['B.Ed. Mathematics','edu',21,'Ma,Ph,Ch/IT/Bi'],['B.Ed. Physics','edu',24,'Ph,Ma,Ch/IT/El'],
+['B.Ed. STEM (Aviation and Aerospace)','edu',21,'Ph,Ma,Ch/MW/AM/AE/El/TD/BC/IT/En'],['B.Ed. STEM (Manufacturing)','edu',24,'Ph,Ma,Ch/MW/AM/AE/TD'],
+['BSc. Aerospace Engineering','sci',7,EM],['BSc. Mechanical Engineering','sci',7,EM],
+['BSc. Agricultural Engineering','sci',13,E1+'|Ph,Ma,TD/Bi/Ag/MW/AM/AE/BC/En@B3'],
+['BSc. Automobile Engineering','sci',10,E1+'|Ph,Ma,MW/AM/AE/TD/BC/WW@B3'],['BSc. Industrial Engineering','sci',10,E1+'|Ph,Ma,MW/AM/AE/TD/BC/WW@B3'],['BSc. Marine Engineering','sci',9,E1+'|Ph,Ma,MW/AM/AE/TD/BC/WW@B3'],
+['BSc. Biomedical Engineering','sci',6,E1+'|Ph,Ma,AE/EE/IT/En/Bi@B3'],
+['BSc. Chemical Engineering','sci',7,E1],['BSc. Civil Engineering','sci',7,E1],['BSc. Geological Engineering','sci',8,E1],['BSc. Materials Engineering','sci',10,E1],['BSc. Metallurgical Engineering','sci',11,E1],['BSc. Petrochemical Engineering','sci',7,E1],['BSc. Petroleum Engineering','sci',6,E1],
+['BSc. Geomatic (Geodetic) Engineering','sci',9,E1+'|Ph,Ma,Ge/TD@B3'],
+['BSc. Computer Engineering','sci',6,EC],['BSc. Telecommunication Engineering','sci',9,EC],['BSc. Electrical/Electronic Engineering','sci',6,E1+'|Ph,Ma,AE/El/IT/EE/En@B3'],
+['BSc. Human Biology (Medicine, MBChB)','health',6,H1,'Entrance exam and interview for shortlisted applicants.'],
+['Bachelor of Dental Surgery (BDS)','health',6,H1,'Fee-paying only. Entrance exam and interview for shortlisted applicants.'],
+['Doctor of Veterinary Medicine (DVM)','health',10,'Bi/AH,Ch,Ph/Ma'],['BSc. Medical Laboratory Science','health',7,H1],
+['BSc. Nursing','health',7,H1,'Interview before admission.'],['BSc. Midwifery','health',8,H1,'Females only. Interview before admission.'],
+['BSc. Physiotherapy and Sports Science','health',12,H1],['Doctor of Pharmacy (Pharm D)','health',6,H1],['Bachelor of Herbal Medicine (BHM)','health',14,H1],['BSc. Medical Imaging','health',7,H1],
+['BSc. Disability and Rehabilitation Studies','health',13,'3*G:Sci/G:Art/G:Bus/G:VA/G:HE'],
+['BA. History','arts',15,'3*G:Art/G:Bus/G:Sci/G:HE/G:VA',SS],['BA. Political Studies','arts',9,'3*G:Art/G:Bus/G:Sci/G:HE/G:VA',SS],
+['Bachelor of Public Administration','arts',11,'3*G:Art/G:Bus/G:Sci/G:HE/G:VA'],
+['BA. Geography and Rural Development','arts',10,'Ge,2*G:Art'],['BA. English','arts',13,'3*G:Art'],
+['BA. French and Francophone Studies','arts',14,'Fr:3,2*G:Art/BM','Needs a grade of B3 or better in French.'],
+['BA. Akan Language and Culture','arts',22,'GL,2*Hi/Ge/Li/Fr/Ec/RS/Go/BM'],
+['BA. Linguistics','arts',15,'Li/GL/Fr,2*Li/GL/Fr/Hi/Ge/Ec/RS/Go/BM'],['BA. Media and Communication Studies','arts',9,'3*G:Art/G:Bus/G:Sci/G:HE/G:VA/G:Tech'],
+['BA. Sociology','arts',11,'3*G:Art/G:Sci/G:Bus',SS],['BA. Social Work','arts',11,'3*G:Art/G:Sci/G:Bus',SS],
+['BA. Religion and Human Development','arts',20,'RS,2*G:Art'],['BA. Economics','biz',10,'Ma,2*G:Art/G:Bus/G:Sci/G:Tech/G:HE/G:VA'],['Bachelor of Laws (LLB)','arts',6,'3*G:Art/G:Bus/G:VA/G:Sci'],
+['BSc. Business Admin. (Human Resource Mgt/Management)','biz',7,'3*G:Bus/G:Art/G:Sci/G:HE'],['BSc. Business Admin. (Marketing/International Business)','biz',9,'3*G:Bus/G:Art/G:Sci/G:HE'],
+['BSc. Hospitality and Tourism Management','biz',10,'3*G:Bus/G:Art/G:Sci/G:HE'],
+['BSc. Business Admin. (Accounting/Banking and Finance)','biz',7,'3*G:Bus/G:Art/G:Sci'],['BSc. Business Admin. (Logistics and Supply Chain/Business IT)','biz',8,'3*G:Bus/G:Art/G:Sci'],
+['BSc. Biochemistry','sci',9,H1],['BSc. Food Science and Technology','sci',11,H1],
+['BSc. Dietetics','health',9,H1+'|FN,Ml,Ch/Bi'],['BSc. Human Nutrition','health',10,H1+'|FN,Ml,Ch/Bi'],
+['BSc. Biological Science','sci',9,H1],['BSc. Environmental Science','sci',12,'Bi/Ag,Ch,Ph/Ma'],['Doctor of Optometry','health',6,'Bi,Ph,Ch/Ma'],
+['BSc. Chemistry','sci',15,'Ch,2*Ph/Ma/Bi'],['BSc. Physics','sci',16,'Ma,Ph,Ch/El'],['BSc. Meteorology and Climate Science','sci',17,'Ma,Ph,Ch/El'],['BSc. Mathematics','sci',15,'Ma,Ph,Ch/Bi'],
+['BSc. Actuarial Science','sci',10,'Ma'],['BSc. Statistics','sci',12,'Ma'],['BSc. Computer Science','sci',7,'Ma,Ph,Ch/AE/El'],['BSc. Information Technology','sci',10,'Ma']
+];
+function ex(e){if(e==='*')return null;var n=[],m=6;e.split('/').forEach(function(t){var q=t.split(':');if(q[0]==='G')n=n.concat(EL[GR[q[1]]]);else{n=n.concat(AB[q[0]]);if(q[1])m=+q[1]}});return{n:n,m:m}}
+function mt(spec,subs){var sl=[];spec.split(',').forEach(function(t){var m=t.match(/^(\d)\*(.*)$/),k=m?+m[1]:1,e=m?m[2]:t;for(var i=0;i<k;i++)sl.push(ex(e))});while(sl.length<3)sl.push(null);
+ return [[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]].some(function(p){return p.every(function(si,i){var s=sl[i],b=subs[si];return b.g<=6&&(!s||(s.n.indexOf(b.n)>-1&&b.g<=s.m))})})}
+function fit(rule,subs,sci){return rule.split('|').some(function(a){var p=a.split('@');return(p[1]!=='B3'||sci<=3)&&mt(p[0],subs)})}
+function knust(agg,ok,area){
+ if(!ok||agg>24)return '';
+ var subs=['e1','e2','e3'].map(function(k){return {n:st.sub[k],g:+st.v[k]}}),sci=+st.v.sc;
+ var r=K.filter(function(p){return(area==='any'||p[1]===area)&&fit(p[3],subs,sci)});
+ var g=[[],[],[]];r.forEach(function(p){g[agg<=p[2]?0:agg<=p[2]+3?1:2].push(p)});
+ var T=['Meets last year’s cut-off','Close to the cut-off','Above last year’s cut-off (a stretch)'],L=['Good fit','Close','Stretch'];
+ var h='<h2>KNUST, Kumasi</h2><p class="small mute">'+r.length+' programme'+(r.length===1?'':'s')+' match your subjects and aggregate. Cut-off points are from KNUST’s published 2024/25 admissions and change every year.</p>';
+ g.forEach(function(a,i){if(!a.length)return;a.sort(function(x,y){return x[2]-y[2]});h+='<h2>'+T[i]+' ('+a.length+')</h2>'+a.map(function(p){return '<div class="card u"><h3>'+p[0]+'</h3><div class="m">Last year’s cut-off: '+p[2]+'</div>'+(p[4]?'<p class="small">'+p[4]+'</p>':'')+'<span class="tag'+(i?' w':'')+'">'+L[i]+'</span></div>'}).join('')});
+ if(!r.length)h+='<div class="card"><p>No KNUST programme matches your electives in this study area. Try another study area above.</p></div>';
+ return h}
+var st={t:'u',step:0,v:{},sub:{},prog:'',area:'any',res:false,wf:'',wl:'',q:''},ip=null;
+
+function sel(id,val){return '<select id="'+id+'" onchange="st.v.'+id+'=this.value" aria-label="Grade"><option value="">Grade</option>'+G.map(function(g,i){return '<option value="'+(i+1)+'"'+(val==(i+1)?' selected':'')+'>'+g+'</option>'}).join('')+'</select>'}
+function prog(){return '<div class="prog">'+[0,1,2].map(function(i){return '<i class="'+(i<=st.step?'on':'')+'"></i>'}).join('')+'</div>'}
+function go(t){st.t=t;render();window.scrollTo(0,0)}
+function chips(arr,cur,fn){return '<div class="chips">'+arr.map(function(a){return '<button class="chip" aria-pressed="'+(cur===a[0])+'" onclick="'+fn+'(\''+a[0]+'\')">'+a[1]+'</button>'}).join('')+'</div>'}
+
+function view(){
+ if(st.t==='s')return schView();
+ if(st.t==='m')return moreView();
+ if(st.res)return resView();
+ var s=st.step,h='<h1>'+['Your core subjects','Your best 3 electives','What do you want to study?'][s]+'</h1>'+prog();
+ if(s===0){h+='<p class="mute">Choose your WASSCE grade for each subject.</p><div class="card">'+
+  [['en','English Language'],['ma','Core Mathematics'],['sc','Integrated Science or Social Studies']].map(function(x){return '<div class="fld"><label>'+x[1]+'</label>'+sel(x[0],st.v[x[0]])+'</div>'}).join('')+'</div><button class="btn" onclick="nx()">Next</button>'}
+ if(s===1){var P=st.prog,L=P?EL[P]:[];h+='<p class="mute">Choose your SHS programme, then your three elective subjects and their grades.</p><div class="card"><div class="fld"><label>Your SHS programme</label><select id="prog" onchange="pickProg(this.value)" aria-label="SHS programme"><option value="">Choose programme</option>'+Object.keys(EL).map(function(k){return '<option'+(P===k?' selected':'')+'>'+k+'</option>'}).join('')+'</select></div>'+(P?['e1','e2','e3'].map(function(k){return '<div class="two">'+subSel(k,L)+sel(k,st.v[k])+'</div>'}).join(''):'<p class="small mute">Choose a programme to see its elective subjects.</p>')+'</div><div class="btns"><button class="btn o" onclick="st.step=0;render()">Back</button><button class="btn" onclick="nx()">Next</button></div>'}
+ if(s===2){h+='<p class="mute">This helps me show the right universities first.</p><div class="opts">'+AREAS.map(function(a){return '<button class="opt" aria-pressed="'+(st.area===a[0])+'" onclick="st.area=\''+a[0]+'\';render()">'+a[2]+' '+a[1]+'</button>'}).join('')+'</div><div class="btns" style="margin-top:14px"><button class="btn o" onclick="st.step=1;render()">Back</button><button class="btn" onclick="st.res=true;render()">See my options</button></div>'}
+ return h+'<p class="small mute" id="msg" style="margin-top:12px"></p>';
+}
+function pickProg(v){st.prog=v;st.sub={};st.v.e1=st.v.e2=st.v.e3='';render()}
+function nx(){
+ var m=$('#msg');function er(t){m.innerHTML='<span class="err">'+t+'</span>'}
+ if(st.step===0){if(['en','ma','sc'].some(function(k){return !st.v[k]})){er('Choose a grade for every subject to continue.');return}}
+ else{var ks=['e1','e2','e3'];
+  if(!st.prog){er('Choose your SHS programme to continue.');return}
+  if(ks.some(function(k){return !st.sub[k]||!st.v[k]})){er('Choose a subject and a grade for all three electives.');return}
+  if(new Set(ks.map(function(k){return st.sub[k]})).size<3){er('Choose three different subjects.');return}}
+ st.step++;render();window.scrollTo(0,0);
+}
+function areaSet(a){st.area=a;render()}
+function resView(){
+ var v=['en','ma','sc','e1','e2','e3'].map(function(k){return +st.v[k]});
+ var agg=v.reduce(function(a,b){return a+b},0),coreOK=v.slice(0,3).every(function(x){return x<=6}),area=st.area;
+ var band=agg<=12?'Very strong':agg<=18?'Strong':agg<=24?'Within the usual degree range':'Above the usual degree limit';
+ var h='<h1>Your results</h1><div class="card"><div class="row" style="align-items:flex-end"><div><div class="mute small">Your aggregate</div><div class="big">'+agg+'</div></div><span class="tag'+(agg>24?' w':'')+'">'+band+'</span></div>'+
+ '<div class="scale"><i style="left:'+((agg-6)/30*100)+'%"></i></div><div class="row small mute"><span>6 (best)</span><span>36</span></div>';
+ if(!coreOK)h+='<p class="warn" style="margin-top:10px">Most degree programmes need at least a credit (C6) in English, Mathematics and Science or Social Studies. Consider resitting the weaker subject, and ask universities about diploma or HND routes.</p>';
+ else if(agg>24)h+='<p class="warn" style="margin-top:10px">Most universities ask for an aggregate of about 24 or lower for degrees. Technical universities and HND routes may still be open to you, and a resit can improve your options.</p>';
+ h+='<p class="small mute" style="margin-top:10px">Your electives: '+['e1','e2','e3'].map(function(k){return st.sub[k]+' ('+G[st.v[k]-1]+')'}).join(', ')+'</p>';
+ if(ADV[area])h+='<p class="small mute">'+ADV[area]+'</p>';
+ if(area==='health'&&agg>12)h+='<p class="small mute">Medicine and dentistry are the most competitive programmes and usually need a very low aggregate. Nursing, physician assistantship, medical laboratory science and pharmacy are other routes to ask about.</p>';
+ h+='</div><h2>Filter by study area</h2>'+chips(AREAS.map(function(a){return [a[0],a[1].split(',')[0]]}),area,'areaSet');
+ h+=knust(agg,coreOK,area);var low=!coreOK||agg>24,list=(low?U.filter(function(u){return u.tech}):U.filter(function(u){return area==='any'||u.a.indexOf(area)>-1})).filter(function(u){return u.n!=='KNUST'});if(list.length)h+='<h2>Other universities</h2><p class="small mute">Course-by-course matching for these is coming soon.</p>';
+ list.forEach(function(u){
+  var t=low?'<span class="tag w">Diploma or HND route</span>':(u.hd&&agg>14)?'<span class="tag w">Competitive for you</span>':'<span class="tag">Worth applying</span>';
+  h+='<div class="card u"><h3>'+u.n+'</h3><div class="m">'+u.c+'</div><p>'+u.k+'</p>'+t+''+'</div>';
+ });
+ return h+'<div class="btns"><button class="btn o" onclick="st.res=false;st.step=0;render();window.scrollTo(0,0)">Start over</button><a class="btn" href="'+wa()+'" target="_blank" rel="noopener">Share on WhatsApp</a></div><p class="small mute" style="margin-top:12px">Your grades stay on your phone. Cut-offs change every year and differ by programme, so this is a guide, not an admission decision. Confirm on each university’s admissions page.</p>';
+}
+function setF(k,x){st[k]=x==='all'?'':x;render()}
+function schView(){
+ var r=S.filter(function(s){return(!st.wf||s.w===st.wf)&&(!st.wl||s.l.indexOf(st.wl)>-1)&&(!st.q||(s.n+' '+s.d).toLowerCase().indexOf(st.q.toLowerCase())>-1)});
+ var h='<h1>Scholarships for graduates</h1><p class="mute">For master’s and PhD study abroad.</p><input type="text" id="q" placeholder="Search scholarships" value="'+st.q+'" oninput="st.q=this.value;clearTimeout(window.tq);window.tq=setTimeout(function(){render();var e=$(\'#q\');e.focus();e.setSelectionRange(99,99)},350)" aria-label="Search scholarships" style="margin-bottom:10px">';
+ h+=chips([['all','Anywhere']].concat(['UK','Germany','USA','Europe','Asia','Africa'].map(function(x){return [x,x]})),st.wf||'all','setWF')+chips([['all','Any level'],['Master’s','Master’s'],['PhD','PhD']],st.wl||'all','setWL');
+ h+=r.length?r.map(function(s){return '<div class="card u"><h3>'+s.n+'</h3><div class="m">'+s.w+' · '+s.l.join(', ')+'</div><p>'+s.d+'</p><a href="'+s.u+'" target="_blank" rel="noopener">Official site</a></div>'}).join(''):'<div class="card"><p>No scholarships match. Try a different place or level.</p></div>';
+ return h+'<div class="card"><h2 style="margin-top:0">Before you apply</h2><p>Most look for strong grades (often second class upper or better), a clear study plan and good recommendation letters. Start preparing 9 to 12 months before the deadline.</p><p class="small mute">Deadlines, amounts and eligibility change every year, so always confirm on the official site.</p></div>';
+}
+function setWF(x){setF('wf',x)}function setWL(x){setF('wl',x)}
+function wa(){return 'https://wa.me/?text='+encodeURIComponent('Find Ghanaian universities that fit your WASSCE results, and scholarships for graduates: '+location.href.split('#')[0])}
+function moreView(){
+ return '<h1>Share and install</h1><div class="card"><h2 style="margin-top:0">Share with friends</h2><p class="mute">Send this site to students who are choosing a university.</p><a class="btn" href="'+wa()+'" target="_blank" rel="noopener">Share on WhatsApp</a></div>'+
+ '<div class="card"><h2 style="margin-top:0">Install as an app</h2>'+(ip?'<button class="btn" onclick="inst()">Install app</button>':'<ol><li><b>iPhone (Safari):</b> tap Share, then Add to Home Screen.</li><li><b>Android (Chrome):</b> tap the menu, then Install app.</li></ol>')+'</div>'+
+ '<div class="card"><h2 style="margin-top:0">About</h2><p class="small mute">Next Step Ghana is a guide to help you shortlist universities and scholarships. Information changes often, so always confirm details on the official websites before you apply.</p></div>';
+}
+function inst(){if(ip){ip.prompt();ip=null;render()}}
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();ip=e;if(st.t==='m')render()});
+function render(){
+ $('#app').innerHTML=view();
+ document.querySelectorAll('nav button').forEach(function(b){b.getAttribute('data-t')===st.t?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current')});
+}
+render();
+if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})}
+</script>
+</body>
+</html>
